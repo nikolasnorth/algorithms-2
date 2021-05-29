@@ -1,0 +1,8 @@
+# jetbrain clion
+.idea/
+CMakeLists.txt
+cmake-build-debug/
+
+# macos
+.DS_Store
+
