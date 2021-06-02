@@ -29,3 +29,19 @@ void insertion_sort(std::vector<T> &items) {
     }
   }
 }
+
+template<typename T>
+void selection_sort(std::vector<T> &items) {
+  for (int i = 0; i < items.size() - 1; i++) {
+    int min = i;
+    for (int j = i + 1; j < items.size(); j++) {
+      if (items[j] < items[min]) min = j;
+    }
+    if (i != min) {
+      // Swap items[i] and items[min]
+      T tmp = items[i];
+      items[i] = items[min];
+      items[min] = tmp;
+    }
+  }
+}
