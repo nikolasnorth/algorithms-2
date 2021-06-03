@@ -42,8 +42,20 @@ void test_selection_sort() {
   }
 }
 
+void test_merge_sort() {
+  std::vector<int> items = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+  std::vector<int> sorted = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  items = merge_sort(items);
+  if (items != sorted) {
+    std::cerr << "Merge sort failed." << std::endl;
+    std::cout << "Got: " << items << std::endl;
+    std::cout << "Expected: " << sorted << std::endl;
+  }
+}
+
 int main() {
   test_bubble_sort();
   test_insertion_sort();
   test_selection_sort();
+  test_merge_sort();
 }

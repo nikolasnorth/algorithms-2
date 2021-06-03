@@ -45,3 +45,39 @@ void selection_sort(std::vector<T> &items) {
     }
   }
 }
+
+// Merges two given sorted arrays, a and b, into one sorted array.
+template<typename T>
+std::vector<T> merge(std::vector<T> &a, std::vector<T> &b) {
+  std::vector<T> result;
+  int i = 0, j = 0;
+  while (i < a.size() && j < b.size()) {
+    if (a[i] < b[j]) {
+      result.push_back(a[i]);
+      i++;
+    } else {
+      result.push_back(b[j]);
+      j++;
+    }
+  }
+  while (i < a.size()) {
+    result.push_back(a[i]);
+    i++;
+  }
+  while (j < b.size()) {
+    result.push_back(b[j]);
+    j++;
+  }
+  return result;
+}
+
+template<typename T>
+std::vector<T> merge_sort(std::vector<T> &a) {
+  if (a.size() == 1) return a;
+  const int mid = static_cast<int>(a.size() / 2);  // drop remainder (if necessary)
+  std::vector<T> l(a.begin(), a.begin() + mid);
+  std::vector<T> r(a.begin() + mid, a.end());
+  l = merge_sort(l);
+  r = merge_sort(r);
+  return merge(l, r);
+}
