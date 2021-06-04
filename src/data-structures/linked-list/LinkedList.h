@@ -51,8 +51,17 @@ public:
 
   void set_tail(Node<T> *n);
 
+  // Adds Node to LinkedList at given index (tail by default).
+  // Throws exception if index is out of range.
   void add(T data, int i = -1);
 
+  // Removes Node from LinkedList at given index (tail by default).
+  // Throws exception if index is out of range.
+  [[nodiscard]]
+  T remove(int i = -1);
+
+  // Retrieves Node at given index.
+  // Throws exception if index is out of range.
   const Node<T> *get(int i) const;
 
   const Node<T> *find(T data, int from = 0) const;

@@ -73,7 +73,7 @@ void LinkedList<T>::add(T data, int i) {
     n->set_next(this->_head);
     this->_head->set_prev(n);
     this->set_head(n);
-  } else if (i == -1) {
+  } else if (i == -1 || i == this->_size) {
     // Add to tail
     n->set_prev(this->_tail);
     this->_tail->set_next(n);
@@ -89,6 +89,40 @@ void LinkedList<T>::add(T data, int i) {
     current->set_next(n);
   }
   this->_size++;
+}
+
+template<typename T>
+T LinkedList<T>::remove(int i) {
+  if (i < -1 || this->_size <= i) throw std::out_of_range("Index was out of range.");
+
+  Node<T> *n;
+  T data;
+  if (this->_size == 1) {
+    n = this->_head;
+    this->_head = nullptr;
+    this->_tail = nullptr;
+  } else if (i == 0) {
+    n = this->_head;
+    n->next()->set_prev(nullptr);
+    n->set_next(nullptr);
+  } else if (i == -1 || i == this->size() - 1) {
+    n = this->_tail;
+    n->prev()->set_next(nullptr);
+    n->set_prev(nullptr);
+  } else {
+    n = this->_head;
+    for (int j = i; j < i; j++) {
+      n = n->next();
+    }
+    n->prev()->set_next(n->next());
+    n->next()->set_prev(n->prev());
+    n->set_prev(nullptr);
+    n->set_next(nullptr);
+  }
+  data = n->data();
+  delete n;
+  this->_size--;
+  return data;
 }
 
 template<typename T>

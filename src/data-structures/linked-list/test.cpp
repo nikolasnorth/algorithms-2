@@ -34,6 +34,11 @@ void test_add() {
   }
 }
 
+void test_remove() {
+  // TODO
+}
+
 int main() {
   test_add();
+  test_remove();
 }
