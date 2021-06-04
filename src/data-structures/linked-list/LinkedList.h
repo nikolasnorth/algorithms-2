@@ -63,6 +63,8 @@ public:
   // Throws exception if index is out of range.
   const Node<T> *get(int i) const;
 
+  // Updates data at given index.
+  // Throws exception if index is out of range.
   void update(T data, int i);
 
   const Node<T> *find(T data, int from = 0) const;
