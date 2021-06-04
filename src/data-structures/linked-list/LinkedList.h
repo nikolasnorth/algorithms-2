@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <optional>
 
 template<typename T>
 class Node {
@@ -67,7 +68,10 @@ public:
   // Throws exception if index is out of range.
   void update(T data, int i);
 
-  const Node<T> *find(T data, int from = 0) const;
+  // Checks if LinkedList holds the specified data
+  // starting from an index (beginning of list by default).
+  // Throws exception if index is out of range.
+  bool contains(T data, int from = 0) const;
 
   int index_of(T data, int from = 0) const;
 

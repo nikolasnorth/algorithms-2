@@ -167,8 +167,20 @@ void LinkedList<T>::update(T data, int i) {
 }
 
 template<typename T>
-const Node<T> *LinkedList<T>::find(T data, int from) const {
-  return nullptr;
+bool LinkedList<T>::contains(T data, int from) const {
+  if (from < 0 || this->_size <= from) throw std::out_of_range("Index was out of range.");
+
+  auto n = this->head();
+  for (int i = 0; i < from; i++) {  // move to starting node
+    n = n->next();
+  }
+  for (int i = from; i < this->_size; i++) {
+    if (n->data() == data) {
+      return true;
+    }
+    n = n->next();
+  }
+  return false;
 }
 
 template<typename T>
