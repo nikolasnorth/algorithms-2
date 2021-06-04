@@ -103,15 +103,17 @@ T LinkedList<T>::remove(int i) {
     this->_tail = nullptr;
   } else if (i == 0) {
     n = this->_head;
+    this->_head = this->_head->next();
     n->next()->set_prev(nullptr);
     n->set_next(nullptr);
   } else if (i == -1 || i == this->size() - 1) {
     n = this->_tail;
+    this->_tail = this->_tail->prev();
     n->prev()->set_next(nullptr);
     n->set_prev(nullptr);
   } else {
     n = this->_head;
-    for (int j = i; j < i; j++) {
+    for (int j = 0; j < i; j++) {
       n = n->next();
     }
     n->prev()->set_next(n->next());
