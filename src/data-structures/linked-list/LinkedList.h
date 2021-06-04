@@ -38,6 +38,8 @@ private:
 public:
   explicit LinkedList();
 
+  ~LinkedList();
+
   [[nodiscard]]
   Node<T> *head() const;
 
@@ -57,12 +59,13 @@ public:
 
   // Removes Node from LinkedList at given index (tail by default).
   // Throws exception if index is out of range.
-  [[nodiscard]]
   T remove(int i = -1);
 
   // Retrieves Node at given index.
   // Throws exception if index is out of range.
   const Node<T> *get(int i) const;
+
+  void update(T data, int i);
 
   const Node<T> *find(T data, int from = 0) const;
 

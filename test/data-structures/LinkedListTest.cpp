@@ -93,3 +93,42 @@ TEST_CASE("LinkedList::remove()") {
     REQUIRE(list.size() == 2);
   }
 }
+
+TEST_CASE("LinkedList::update()") {
+  LinkedList<int> list;
+
+  SECTION("index greater than (or equal to) list size, or less than 0 should throw exception") {
+    REQUIRE_THROWS_AS(list.update(100, 0), std::out_of_range);
+    REQUIRE_THROWS_AS(list.update(100, -1), std::out_of_range);
+  }
+
+  SECTION("update head node") {
+    list.add(100);
+    list.add(100);
+    list.add(100);
+
+    list.update(200, 0);
+
+    REQUIRE(list.head()->data() == 200);
+  }
+
+  SECTION("update tail node") {
+    list.add(100);
+    list.add(100);
+    list.add(100);
+
+    list.update(200, list.size() - 1);
+
+    REQUIRE(list.tail()->data() == 200);
+  }
+
+  SECTION("update middle node") {
+    list.add(100);
+    list.add(100);
+    list.add(100);
+
+    list.update(200, 1);
+
+    REQUIRE(list.get(1)->data() == 200);
+  }
+}
