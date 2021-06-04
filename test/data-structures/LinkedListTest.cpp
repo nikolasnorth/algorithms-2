@@ -181,3 +181,52 @@ TEST_CASE("LinkedList::find()") {
     REQUIRE(result == true);
   }
 }
+
+TEST_CASE("LinkedList::index_of()") {
+  LinkedList<int> list;
+
+  SECTION("index greater than (or equal to) list size, or less than 0 should throw exception") {
+    REQUIRE_THROWS_AS(list.index_of(100, 0), std::out_of_range);
+    REQUIRE_THROWS_AS(list.index_of(100, -1), std::out_of_range);
+  }
+
+  SECTION("data is not in list") {
+    list.add(100);
+    list.add(200);
+    list.add(300);
+
+    auto result = list.index_of(500);
+
+    REQUIRE(result == -1);
+  }
+
+  SECTION("data is in list") {
+    list.add(100);
+    list.add(200);
+    list.add(300);
+
+    auto result = list.index_of(200);
+
+    REQUIRE(result == 1);
+  }
+
+  SECTION("data is in list, however not from starting index") {
+    list.add(100);
+    list.add(200);
+    list.add(300);
+
+    auto result = list.index_of(100, 1);
+
+    REQUIRE(result == -1);
+  }
+
+  SECTION("data is in list, and found from starting position greater than 0") {
+    list.add(100);
+    list.add(200);
+    list.add(300);
+
+    auto result = list.index_of(300, 1);
+
+    REQUIRE(result == 2);
+  }
+}

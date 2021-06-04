@@ -73,6 +73,10 @@ public:
   // Throws exception if index is out of range.
   bool contains(T data, int from = 0) const;
 
+  // Returns the index of the given data starting from
+  // an index (beginning of list by default).
+  // Returns -1 if data not found.
+  // Throws exception if index is out of range.
   int index_of(T data, int from = 0) const;
 
   void sort();

@@ -170,7 +170,7 @@ template<typename T>
 bool LinkedList<T>::contains(T data, int from) const {
   if (from < 0 || this->_size <= from) throw std::out_of_range("Index was out of range.");
 
-  auto n = this->head();
+  auto n = this->_head;
   for (int i = 0; i < from; i++) {  // move to starting node
     n = n->next();
   }
@@ -185,7 +185,19 @@ bool LinkedList<T>::contains(T data, int from) const {
 
 template<typename T>
 int LinkedList<T>::index_of(T data, int from) const {
-  return 0;
+  if (from < 0 || this->_size <= from) throw std::out_of_range("Index was out of range.");
+
+  auto n = this->_head;
+  for (int i = 0; i < from; i++) {  // move to starting node
+    n = n->next();
+  }
+  for (int i = from; i < this->_size; i++) {
+    if (n->data() == data) {
+      return i;
+    }
+    n = n->next();
+  }
+  return -1;
 }
 
 template<typename T>
