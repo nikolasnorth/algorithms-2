@@ -1,8 +1,6 @@
 #pragma once
 
 #include <stdexcept>
-#include <memory>
-#include <optional>
 
 template<typename T>
 class Node {
