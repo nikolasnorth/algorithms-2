@@ -20,7 +20,7 @@ void bubble_sort(std::vector<T> &items) {
 template<typename T>
 void insertion_sort(std::vector<T> &items) {
   for (int i = 1; i < items.size(); i++) {
-    for (int j = i; j >= 0; j--) {
+    for (int j = i; j > 0; j--) {
       if (items[j] >= items[j - 1]) break;
       // Shift items[j] left 1 position
       T tmp = items[j];
