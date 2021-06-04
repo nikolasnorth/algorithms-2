@@ -5,6 +5,9 @@ cmake-build-debug/
 # macos
 .DS_Store
 
-# builds
-dist/
+# executable files
+build/
+
+# dependencies
+lib/
 
