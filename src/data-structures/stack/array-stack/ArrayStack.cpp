@@ -9,7 +9,7 @@ int ArrayStack<T>::size() const {
 }
 
 template<typename T>
-void ArrayStack<T>::push(T data) {
+void ArrayStack<T>::push(const T &data) {
   _items.push_back(data);
 }
 

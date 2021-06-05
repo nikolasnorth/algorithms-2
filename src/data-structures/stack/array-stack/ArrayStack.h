@@ -13,7 +13,7 @@ public:
   [[nodiscard]]
   int size() const;
 
-  void push(T data);
+  void push(const T &data);
 
   std::optional<T> pop();
 
