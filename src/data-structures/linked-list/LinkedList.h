@@ -1,7 +1,6 @@
 #pragma once
 
 #include <stdexcept>
-#include <optional>
 
 template<typename T>
 class Node {
@@ -57,11 +56,12 @@ public:
   void add(T data, int i = -1);
 
   // Removes Node from LinkedList at given index (tail by default).
-  // Throws exception if index is out of range.
+  // Throws exception if index is out of range or list is empty.
   T remove(int i = -1);
 
   // Retrieves Node at given index.
   // Throws exception if index is out of range.
+  [[nodiscard]]
   const Node<T> *get(int i) const;
 
   // Updates data at given index.
@@ -71,12 +71,14 @@ public:
   // Checks if LinkedList holds the specified data
   // starting from an index (beginning of list by default).
   // Throws exception if index is out of range.
+  [[nodiscard]]
   bool contains(T data, int from = 0) const;
 
   // Returns the index of the given data starting from
   // an index (beginning of list by default).
   // Returns -1 if data not found.
   // Throws exception if index is out of range.
+  [[nodiscard]]
   int index_of(T data, int from = 0) const;
 
   void sort();
