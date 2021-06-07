@@ -1,5 +1,9 @@
 #include <vector>
 
+// Sorts items in ascending order using bubble sort algorithm.
+//
+// Time: O(n^2)
+// Space: O(1) auxiliary
 template<typename T>
 void bubble_sort(std::vector<T> &items) {
   for (int i = 0; i < items.size() - 1; i++) {
@@ -17,6 +21,10 @@ void bubble_sort(std::vector<T> &items) {
   }
 }
 
+// Sorts items in ascending order using insertion sort algorithm.
+//
+// Time: O(n^2)
+// Space: O(1) auxiliary
 template<typename T>
 void insertion_sort(std::vector<T> &items) {
   for (int i = 1; i < items.size(); i++) {
@@ -30,6 +38,10 @@ void insertion_sort(std::vector<T> &items) {
   }
 }
 
+// Sorts items in ascending order using selection sort algorithm.
+//
+// Time: O(n^2)
+// Space: O(1) auxiliary
 template<typename T>
 void selection_sort(std::vector<T> &items) {
   for (int i = 0; i < items.size() - 1; i++) {
@@ -71,12 +83,17 @@ std::vector<T> merge(std::vector<T> &a, std::vector<T> &b) {
   return result;
 }
 
+// Sort items in ascending order using merge sort algorithm.
+//
+// Time: O(nlogn)
+// Space: O(n) auxiliary
 template<typename T>
-std::vector<T> merge_sort(std::vector<T> &a) {
-  if (a.size() == 1) return a;
-  const int mid = static_cast<int>(a.size() / 2);  // drop remainder (if necessary)
-  std::vector<T> l(a.begin(), a.begin() + mid);
-  std::vector<T> r(a.begin() + mid, a.end());
+std::vector<T> merge_sort(std::vector<T> &items) {
+  if (items.size() == 1) return items;
+
+  const int mid = static_cast<int>(items.size() / 2);  // drop remainder (if necessary)
+  std::vector<T> l(items.begin(), items.begin() + mid);
+  std::vector<T> r(items.begin() + mid, items.end());
   l = merge_sort(l);
   r = merge_sort(r);
   return merge(l, r);
@@ -87,7 +104,7 @@ std::vector<T> merge_sort(std::vector<T> &a) {
 // hi: Last index of items
 //
 // Time: O(nlogn) with very high probability
-// Space: O(n)
+// Space: O(n) auxiliary
 template<typename T>
 void quicksort(std::vector<T> &items, int lo, int hi) {
   if (lo >= hi) return;
