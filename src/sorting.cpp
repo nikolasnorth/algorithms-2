@@ -81,3 +81,42 @@ std::vector<T> merge_sort(std::vector<T> &a) {
   r = merge_sort(r);
   return merge(l, r);
 }
+
+// Sorts items in ascending order using quicksort algorithm.
+// lo: Starting index of items
+// hi: Last index of items
+//
+// Time: O(nlogn) with very high probability
+// Space: O(n)
+template<typename T>
+void quicksort(std::vector<T> &items, int lo, int hi) {
+  if (lo >= hi) return;
+
+  // Choose random pivot
+  int pivot = rand() % (hi + 1);
+  // Move pivot to end of items
+  T tmp;
+  tmp = items[pivot];
+  items[pivot] = items[hi];
+  items[hi] = tmp;
+  pivot = hi;
+
+  int i = lo, j = lo;
+  while (j < pivot) {
+    if (items[j] < items[pivot]) {
+      // Swap i and j
+      tmp = items[j];
+      items[j] = items[i];
+      items[i] = tmp;
+      i++;
+    }
+    j++;
+  }
+  // Swap i and pivot
+  tmp = items[pivot];
+  items[pivot] = items[i];
+  items[i] = tmp;
+  pivot = i;
+  quicksort(items, lo, pivot - 1);
+  quicksort(items, pivot + 1, hi);
+}
