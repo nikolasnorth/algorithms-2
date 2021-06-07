@@ -5,6 +5,7 @@ set(SOURCE_FILES
         data-structures/LinkedListTest.cpp
         data-structures/ArrayStackTest.cpp
         data-structures/ListStackTest.cpp
+        data-structures/ArrayQueueTest.cpp
         )
 add_executable(algorithms_test ${SOURCE_FILES})
 target_link_libraries(algorithms_test algorithms_src)
