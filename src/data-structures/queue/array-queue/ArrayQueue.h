@@ -15,7 +15,7 @@ public:
   int size() const;
 
   // Inserts given data to the Queue.
-  void enqueue(T data);
+  void enqueue(const T &data);
 
   // Removes and returns data from the Queue.
   std::optional<T> dequeue();

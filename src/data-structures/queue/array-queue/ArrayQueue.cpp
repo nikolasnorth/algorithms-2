@@ -9,7 +9,7 @@ int ArrayQueue<T>::size() const {
 }
 
 template<typename T>
-void ArrayQueue<T>::enqueue(T data) {
+void ArrayQueue<T>::enqueue(const T &data) {
   _items.push_back(data);
 }
 
@@ -18,7 +18,7 @@ std::optional<T> ArrayQueue<T>::dequeue() {
   if (_items.size() == 0) {
     return std::nullopt;
   }
-  T item = _items.front();
+  const auto item = _items.front();
   _items.erase(_items.begin());
   return item;
 }
