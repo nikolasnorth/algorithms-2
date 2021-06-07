@@ -1,5 +1,12 @@
 #include <vector>
 
+template<typename T>
+void swap(T &x, T &y) {
+  T tmp = x;
+  x = y;
+  y = tmp;
+}
+
 // Sorts items in ascending order using bubble sort algorithm.
 //
 // Time: O(n^2)
@@ -10,10 +17,7 @@ void bubble_sort(std::vector<T> &items) {
     bool done = true;
     for (int j = 0; j < items.size() - i - 1; j++) {
       if (items[j] > items[j + 1]) {
-        // Swap items
-        T tmp = items[j];
-        items[j] = items[j + 1];
-        items[j + 1] = tmp;
+        swap(items[j], items[j + 1]);
         done = false;
       }
     }
@@ -29,11 +33,10 @@ template<typename T>
 void insertion_sort(std::vector<T> &items) {
   for (int i = 1; i < items.size(); i++) {
     for (int j = i; j > 0; j--) {
-      if (items[j] >= items[j - 1]) break;
-      // Shift items[j] left 1 position
-      T tmp = items[j];
-      items[j] = items[j - 1];
-      items[j - 1] = tmp;
+      if (items[j] >= items[j - 1]) {
+        break;
+      }
+      swap(items[j], items[j - 1]);
     }
   }
 }
@@ -50,10 +53,7 @@ void selection_sort(std::vector<T> &items) {
       if (items[j] < items[min]) min = j;
     }
     if (i != min) {
-      // Swap items[i] and items[min]
-      T tmp = items[i];
-      items[i] = items[min];
-      items[min] = tmp;
+      swap(items[i], items[min]);
     }
   }
 }
@@ -109,30 +109,20 @@ template<typename T>
 void quicksort(std::vector<T> &items, int lo, int hi) {
   if (lo >= hi) return;
 
-  // Choose random pivot
+  // Choose random pivot and move to end of list
   int pivot = rand() % (hi + 1);
-  // Move pivot to end of items
-  T tmp;
-  tmp = items[pivot];
-  items[pivot] = items[hi];
-  items[hi] = tmp;
+  swap(items[pivot], items[hi]);
   pivot = hi;
 
   int i = lo, j = lo;
   while (j < pivot) {
     if (items[j] < items[pivot]) {
-      // Swap i and j
-      tmp = items[j];
-      items[j] = items[i];
-      items[i] = tmp;
+      swap(items[i], items[j]);
       i++;
     }
     j++;
   }
-  // Swap i and pivot
-  tmp = items[pivot];
-  items[pivot] = items[i];
-  items[i] = tmp;
+  swap(items[i], items[pivot]);
   pivot = i;
   quicksort(items, lo, pivot - 1);
   quicksort(items, pivot + 1, hi);
