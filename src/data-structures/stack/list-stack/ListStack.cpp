@@ -9,17 +9,17 @@ int ListStack<T>::size() const {
 }
 
 template<typename T>
-void ListStack<T>::enqueue(const T &data) {
+void ListStack<T>::push(const T &data) {
   _items.push_back(data);
 }
 
 template<typename T>
-std::optional<T> ListStack<T>::dequeue() {
+std::optional<T> ListStack<T>::pop() {
   if (_items.size() == 0) {
     return std::nullopt;
   }
-  const auto item = _items.front();
-  _items.pop_front();
+  const auto item = _items.back();
+  _items.pop_back();
   return item;
 }
 
@@ -28,5 +28,5 @@ std::optional<T> ListStack<T>::peek() const {
   if (_items.size() == 0) {
     return std::nullopt;
   }
-  return _items.front();
+  return _items.back();
 }

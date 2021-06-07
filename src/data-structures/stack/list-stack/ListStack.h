@@ -13,9 +13,9 @@ public:
   [[nodiscard]]
   int size() const;
 
-  void enqueue(const T &data);
+  void push(const T &data);
 
-  std::optional<T> dequeue();
+  std::optional<T> pop();
 
   [[nodiscard]]
   std::optional<T> peek() const;
