@@ -14,13 +14,24 @@ public:
   [[nodiscard]]
   int size() const;
 
-  // Inserts given data to the Queue.
+  // Inserts given item into the Queue.
+  //
+  // Time: O(1)
   void enqueue(const T &data);
 
-  // Removes and returns data from the Queue.
+  // Removes and returns next item from the Queue.
+  // If empty, std::nullopt is returned.
+  //
+  // Note: Underlying array data structure requires all elements to
+  // be shifted one position after the first element is removed.
+  //
+  // Time: O(n)
   std::optional<T> dequeue();
 
-  // Returns data from the Queue.
+  // Returns next item from the Queue.
+  // If empty, std::nullopt is returned.
+  //
+  // Time: O(1)
   [[nodiscard]]
   std::optional<T> peek() const;
 };
