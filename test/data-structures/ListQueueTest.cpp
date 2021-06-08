@@ -1,8 +1,8 @@
 #include "catch.hh"
-#include "../src/data-structures/queue/array-queue/ArrayQueue.cpp"
+#include "../src/data-structures/queue/list-queue/ListQueue.cpp"
 
-TEST_CASE("ArrayQueue: enqueue 3 items then dequeue 3 items") {
-  ArrayQueue<int> q;
+TEST_CASE("ListQueue: enqueue 3 items then dequeue 3 items") {
+  ListQueue<int> q;
 
   q.enqueue(100);
   q.enqueue(200);
