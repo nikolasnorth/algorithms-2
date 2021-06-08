@@ -16,7 +16,10 @@ public:
 
   // Inserts given item into the Queue.
   //
-  // Time: O(1)
+  // Note: If number of items exceeds the max capacity of the
+  // underlying array, reallocation is performed.
+  //
+  // Time: O(1) amortized, O(n) if reallocation occurs.
   void enqueue(const T &data);
 
   // Removes and returns next item from the Queue.
