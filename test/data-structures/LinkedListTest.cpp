@@ -12,22 +12,22 @@ TEST_CASE("LinkedList::add()") {
   SECTION("add to empty list") {
     list.add(100);
 
-    REQUIRE(list.head()->data() == 100);
-    REQUIRE(list.tail()->data() == 100);
+    REQUIRE(list.head().value_or(-1) == 100);
+    REQUIRE(list.tail().value_or(-1) == 100);
     REQUIRE(list.size() == 1);
   }
 
   SECTION("add to beginning of non-empty list") {
     list.add(100, 0);
 
-    REQUIRE(list.head()->data() == 100);
+    REQUIRE(list.head().value_or(-1) == 100);
     REQUIRE(list.size() == 1);
   }
 
   SECTION("add to end of non-empty list") {
     list.add(100);
 
-    REQUIRE(list.tail()->data() == 100);
+    REQUIRE(list.tail().value_or(-1) == 100);
     REQUIRE(list.size() == 1);
   }
 
@@ -36,7 +36,7 @@ TEST_CASE("LinkedList::add()") {
     list.add(300);
     list.add(200, 1);
 
-    REQUIRE(list.get(1)->data() == 200);
+    REQUIRE(list.get(1).value_or(-1) == 200);
     REQUIRE(list.size() == 3);
   }
 }
@@ -66,7 +66,7 @@ TEST_CASE("LinkedList::remove()") {
     auto result = list.remove(0);
 
     REQUIRE(result == 100);
-    REQUIRE(list.head()->data() == 200);
+    REQUIRE(list.head().value_or(-1) == 200);
     REQUIRE(list.size() == 2);
   }
 
@@ -78,7 +78,7 @@ TEST_CASE("LinkedList::remove()") {
     auto result = list.remove();
 
     REQUIRE(result == 300);
-    REQUIRE(list.tail()->data() == 200);
+    REQUIRE(list.tail().value_or(-1) == 200);
     REQUIRE(list.size() == 2);
   }
 
@@ -109,7 +109,7 @@ TEST_CASE("LinkedList::update()") {
 
     list.update(200, 0);
 
-    REQUIRE(list.head()->data() == 200);
+    REQUIRE(list.head().value_or(-1) == 200);
   }
 
   SECTION("update tail node") {
@@ -119,7 +119,7 @@ TEST_CASE("LinkedList::update()") {
 
     list.update(200, list.size() - 1);
 
-    REQUIRE(list.tail()->data() == 200);
+    REQUIRE(list.tail().value_or(-1) == 200);
   }
 
   SECTION("update middle node") {
@@ -129,7 +129,7 @@ TEST_CASE("LinkedList::update()") {
 
     list.update(200, 1);
 
-    REQUIRE(list.get(1)->data() == 200);
+    REQUIRE(list.get(1).value_or(-1) == 200);
   }
 }
 

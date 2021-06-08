@@ -48,13 +48,19 @@ LinkedList<T>::~LinkedList<T>() {
 }
 
 template<typename T>
-Node<T> *LinkedList<T>::head() const {
-  return _head;
+std::optional<T> LinkedList<T>::head() const {
+  if (_size == 0) {
+    return std::nullopt;
+  }
+  return _head->data();
 }
 
 template<typename T>
-Node<T> *LinkedList<T>::tail() const {
-  return _tail;
+std::optional<T> LinkedList<T>::tail() const {
+  if (_size == 0) {
+    return std::nullopt;
+  }
+  return _tail->data();
 }
 
 template<typename T>
@@ -139,14 +145,15 @@ T LinkedList<T>::remove(int i) {
 }
 
 template<typename T>
-const Node<T> *LinkedList<T>::get(int i) const {
+std::optional<T> LinkedList<T>::get(int i) const {
+  if (_size == 0) return std::nullopt;
   if (i < 0 || this->_size <= i) throw std::out_of_range("Index was out of range.");
 
   auto n = this->_head;
   for (int j = 0; j < i; j++) {
     n = n->next();
   }
-  return n;
+  return n->data();
 }
 
 template<typename T>

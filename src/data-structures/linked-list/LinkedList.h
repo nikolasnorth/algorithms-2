@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <optional>
 
 template<typename T>
 class Node {
@@ -38,12 +39,21 @@ public:
 
   ~LinkedList();
 
+  // Returns data stored in the first node of the list.
+  // If list is empty, std::nullopt is returned.
+  //
+  // Time: O(1)
   [[nodiscard]]
-  Node<T> *head() const;
+  std::optional<T> head() const;
 
+  // Returns data stored in the last node of the list.
+  // If list is empty, std::nullopt is returned.
+  //
+  // Time: O(1)
   [[nodiscard]]
-  Node<T> *tail() const;
+  std::optional<T> tail() const;
 
+  // Returns the number of nodes in the list.
   [[nodiscard]]
   int size() const;
 
@@ -51,33 +61,46 @@ public:
 
   void set_tail(Node<T> *n);
 
-  // Adds Node to LinkedList at given index (tail by default).
+  // Inserts node into the list at given index (tail by default).
   // Throws exception if index is out of range.
+  //
+  // Time: O(1)
   void add(T data, int i = -1);
 
-  // Removes Node from LinkedList at given index (tail by default).
+  // Removes node from list at given index (tail by default).
   // Throws exception if index is out of range or list is empty.
+  //
+  // Time: O(n)
   T remove(int i = -1);
 
-  // Retrieves Node at given index.
-  // Throws exception if index is out of range.
+  // Returns data stored at the given index.
+  // If list is empty, std::nullopt is returned.
+  // Throws exception if list is not empty and index is out of range.
+  //
+  // Time: O(n)
   [[nodiscard]]
-  const Node<T> *get(int i) const;
+  std::optional<T> get(int i) const;
 
-  // Updates data at given index.
+  // Updates data at the given index.
   // Throws exception if index is out of range.
+  //
+  // Time: O(n)
   void update(T data, int i);
 
-  // Checks if LinkedList holds the specified data
-  // starting from an index (beginning of list by default).
+  // Checks if list holds the specified data starting from an index
+  // (beginning of list by default).
   // Throws exception if index is out of range.
+  //
+  // Time: O(n)
   [[nodiscard]]
   bool contains(T data, int from = 0) const;
 
-  // Returns the index of the given data starting from
-  // an index (beginning of list by default).
-  // Returns -1 if data not found.
+  // Returns the index of given data. Returns -1 data not found.
+  // data: item to be searched
+  // from: [Optional] index to serve as starting point (start of list by default)
   // Throws exception if index is out of range.
+  //
+  // Time: O(n)
   [[nodiscard]]
   int index_of(T data, int from = 0) const;
 
