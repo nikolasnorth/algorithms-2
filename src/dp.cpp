@@ -15,7 +15,7 @@ int64_t fib(int32_t n) {
 //
 // Time: O(n)
 // Space: O(n) auxiliary
-int64_t fib(int32_t n, std::unordered_map<int32_t , int64_t> &memo) {
+int64_t fib(int32_t n, std::unordered_map<int32_t, int64_t> &memo) {
   if (memo.find(n) != memo.end()) return memo[n];
   if (n <= 2) return 1;
 
