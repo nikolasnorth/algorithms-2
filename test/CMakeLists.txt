@@ -2,6 +2,7 @@ project(algorithms_test)
 set(SOURCE_FILES
         main.cpp
         sorting_test.cpp
+        dp.cpp
         data-structures/LinkedListTest.cpp
         data-structures/ArrayStackTest.cpp
         data-structures/ListStackTest.cpp
