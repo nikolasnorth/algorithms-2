@@ -1,7 +1,7 @@
 #include "catch.hh"
 #include "../src/dp.cpp"
 
-TEST_CASE("naive fib()") {
+TEST_CASE("fib()") {
   REQUIRE(fib(6) == 8);
   REQUIRE(fib(7) == 13);
   REQUIRE(fib(8) == 21);
