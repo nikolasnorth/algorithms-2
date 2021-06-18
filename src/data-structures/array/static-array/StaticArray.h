@@ -28,4 +28,3 @@ public:
   // Throws std::out_of_range exception if i is less than zero or greater than capacity.
   void insert(const int i, const T &data);
 };
-
