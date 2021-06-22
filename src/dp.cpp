@@ -46,7 +46,7 @@ bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unord
 // Note: numbers can be summed more than once to achieve the target.
 //
 // Time: O(m * n)
-// Space: O(m * n)
+// Space: O(m^2)
 // where m = target, and n = size of nums
 std::optional<std::vector<uint>> how_sum(const int target, const std::vector<uint> &nums, std::unordered_map<int, std::optional<std::vector<uint>>> &cache) {
   if (target == 0) return std::vector<uint>();
