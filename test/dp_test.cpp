@@ -21,3 +21,17 @@ TEST_CASE("can_sum()") {
   cache.clear();
   REQUIRE(can_sum(300, std::vector<unsigned int>{7, 14}, cache) == false);  // should finish fairly quickly
 }
+
+TEST_CASE("how_sum()") {
+  std::unordered_map<int, std::optional<std::vector<uint>>> cache;
+
+  REQUIRE(how_sum(7, std::vector<uint>{2, 3}, cache).has_value() == true);
+  cache.clear();
+  REQUIRE(how_sum(7, std::vector<uint>{5, 3, 4, 7}, cache).has_value() == true);
+  cache.clear();
+  REQUIRE(how_sum(7, std::vector<uint>{2, 4}, cache).has_value() == false);
+  cache.clear();
+  REQUIRE(how_sum(8, std::vector<uint>{2, 3, 5}, cache).has_value() == true);
+  cache.clear();
+  REQUIRE(how_sum(300, std::vector<uint>{7, 14}, cache).has_value() == false);  // should finish fairly quickly
+}
