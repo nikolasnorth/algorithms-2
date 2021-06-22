@@ -23,6 +23,10 @@ int64_t fib(int32_t n) {
 // Given a list of numbers, asserts whether there exists a combination of those numbers which add up to the
 // target sum.
 // Note: numbers can be summed more than once to achieve the target.
+//
+// Time: O(m * n)
+// Space: O(m)
+// where m = target, and n = size of nums.
 bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unordered_map<unsigned int, bool> &cache) {
   if (cache.contains(target)) return cache[target];
   if (target == 0) return true;
@@ -40,6 +44,10 @@ bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unord
 // Given a list of numbers, returns a set of those numbers which add up to the target sum.
 // If the target sum is not possible given the list of numbers, NULL will be returned.
 // Note: numbers can be summed more than once to achieve the target.
+//
+// Time: O(m * n)
+// Space: O(m * n)
+// where m = target, and n = size of nums
 std::optional<std::vector<uint>> how_sum(const int target, const std::vector<uint> &nums, std::unordered_map<int, std::optional<std::vector<uint>>> &cache) {
   if (target == 0) return std::vector<uint>();
   if (target < 0) return std::nullopt;
