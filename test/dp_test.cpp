@@ -35,3 +35,20 @@ TEST_CASE("how_sum()") {
   cache.clear();
   REQUIRE(how_sum(300, std::vector<uint>{7, 14}, cache).has_value() == false);  // should finish fairly quickly
 }
+
+TEST_CASE("best_sum()") {
+  std::unordered_map<int, std::optional<std::vector<uint>>> cache;
+
+  REQUIRE(best_sum(7, std::vector<uint>{5, 3, 4, 7}, cache).value_or(std::vector<uint>()) == std::vector<uint>{7});
+  cache.clear();
+
+  REQUIRE(best_sum(8, std::vector<uint>{2, 3, 5}, cache).value_or(std::vector<uint>()) == std::vector<uint>{5, 3});
+  cache.clear();
+
+  REQUIRE(best_sum(8, std::vector<uint>{1, 4, 5}, cache).value_or(std::vector<uint>()) == std::vector<uint>{4, 4});
+  cache.clear();
+
+  REQUIRE(  // should finish fairly quickly
+      best_sum(100, std::vector<uint>{1, 2, 5, 25}, cache).value_or(std::vector<uint>()) == std::vector<uint>{25, 25, 25, 25}
+  );
+}

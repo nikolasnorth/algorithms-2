@@ -41,8 +41,8 @@ bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unord
   return false;
 }
 
-// Given a list of numbers, returns a set of those numbers which add up to the target sum.
-// If the target sum is not possible given the list of numbers, NULL will be returned.
+// Returns a list of the given numbers which add up to the target sum.
+// If the target sum is not possible given the list of numbers, std::nullopt will be returned.
 // Note: numbers can be summed more than once to achieve the target.
 //
 // Time: O(m * n)
@@ -53,7 +53,7 @@ std::optional<std::vector<uint>> how_sum(const int target, const std::vector<uin
   if (target < 0) return std::nullopt;
   if (cache.contains(target)) return cache[target];
 
-  for (const unsigned int &n : nums) {
+  for (const uint &n : nums) {
     auto result = how_sum(static_cast<int>(target - n), nums, cache);
     if (result.has_value()) {
       result.value().push_back(n);
@@ -64,4 +64,31 @@ std::optional<std::vector<uint>> how_sum(const int target, const std::vector<uin
 
   cache[target] = std::nullopt;
   return std::nullopt;
+}
+
+// Returns the shortest possible list of the given numbers which add up to the target sum.
+// If the target sum is not possible given the list of numbers, std::nullopt will be returned.
+// Note: numbers can be summed more than once to achieve the target.
+//
+// Time: O(m^2 * n)
+// Space: O(m^2)
+// where m = target, and n = size of nums
+std::optional<std::vector<uint>> best_sum(const int target, const std::vector<uint> &nums, std::unordered_map<int, std::optional<std::vector<uint>>> &cache) {
+  if (target == 0) return std::vector<uint>();
+  if (target < 0) return std::nullopt;
+  if (cache.contains(target)) return cache[target];
+
+  std::optional<std::vector<uint>> best = std::nullopt;
+  for (const uint &n : nums) {
+    auto result = best_sum(static_cast<int>(target - n), nums, cache);
+    if (!result.has_value()) continue;
+
+    result.value().push_back(n);
+    if (!best.has_value() || result.value().size() < best.value().size()) {
+      best = result;
+    }
+  }
+
+  cache[target] = best;
+  return best;
 }
