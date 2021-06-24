@@ -48,7 +48,11 @@ bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unord
 // Time: O(m * n)
 // Space: O(m^2)
 // where m = target, and n = size of nums
-std::optional<std::vector<uint>> how_sum(const int target, const std::vector<uint> &nums, std::unordered_map<int, std::optional<std::vector<uint>>> &cache) {
+std::optional<std::vector<uint>> how_sum(
+    const int target,
+    const std::vector<uint> &nums,
+    std::unordered_map<int, std::optional<std::vector<uint>>> &cache
+) {
   if (target == 0) return std::vector<uint>();
   if (target < 0) return std::nullopt;
   if (cache.contains(target)) return cache[target];
@@ -73,7 +77,11 @@ std::optional<std::vector<uint>> how_sum(const int target, const std::vector<uin
 // Time: O(m^2 * n)
 // Space: O(m^2)
 // where m = target, and n = size of nums
-std::optional<std::vector<uint>> best_sum(const int target, const std::vector<uint> &nums, std::unordered_map<int, std::optional<std::vector<uint>>> &cache) {
+std::optional<std::vector<uint>> best_sum(
+    const int target,
+    const std::vector<uint> &nums,
+    std::unordered_map<int, std::optional<std::vector<uint>>> &cache
+) {
   if (target == 0) return std::vector<uint>();
   if (target < 0) return std::nullopt;
   if (cache.contains(target)) return cache[target];
