@@ -11,6 +11,7 @@ typedef unsigned int uint;
 //
 // Time: O(n)
 // Space: O(n) auxiliary
+//
 int64_t fib(int32_t n) {
   static std::unordered_map<int, int64_t> cache;
 
@@ -21,13 +22,14 @@ int64_t fib(int32_t n) {
   return cache[n];
 }
 
-// Given a list of numbers, asserts whether there exists a combination of those numbers which add up to the
-// target sum.
+
+// Given a list of numbers, asserts whether there exists a combination of those numbers which add up to the target sum.
 // Note: numbers can be summed more than once to achieve the target.
 //
 // Time: O(m * n)
 // Space: O(m)
 // where m = target, and n = size of nums.
+//
 bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unordered_map<unsigned int, bool> &cache) {
   if (cache.contains(target)) return cache[target];
   if (target == 0) return true;
@@ -42,6 +44,7 @@ bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unord
   return false;
 }
 
+
 // Returns a list of the given numbers which add up to the target sum.
 // If the target sum is not possible given the list of numbers, std::nullopt will be returned.
 // Note: numbers can be summed more than once to achieve the target.
@@ -49,6 +52,7 @@ bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unord
 // Time: O(m * n)
 // Space: O(m^2)
 // where m = target, and n = size of nums
+//
 std::optional<std::vector<uint>> how_sum(
     const int target,
     const std::vector<uint> &nums,
@@ -71,6 +75,7 @@ std::optional<std::vector<uint>> how_sum(
   return std::nullopt;
 }
 
+
 // Returns the shortest possible list of the given numbers which add up to the target sum.
 // If the target sum is not possible given the list of numbers, std::nullopt will be returned.
 // Note: numbers can be summed more than once to achieve the target.
@@ -78,6 +83,7 @@ std::optional<std::vector<uint>> how_sum(
 // Time: O(m^2 * n)
 // Space: O(m^2)
 // where m = target, and n = size of nums
+//
 std::optional<std::vector<uint>> best_sum(
     const int target,
     const std::vector<uint> &nums,
@@ -102,12 +108,14 @@ std::optional<std::vector<uint>> best_sum(
   return best;
 }
 
+
 // Given a list of words, asserts whether the target can be constructed by any combination of those words.
 // Note: Any given word can be used more than once to construct the target.
 //
 // Time: O(m^2 * n)
 // Space: O(m^2)
 // where m = size of target, and n = size of words
+//
 bool can_construct(const std::string &target, const std::vector<std::string> &words, std::unordered_map<std::string, bool> &cache) {
   if (target.empty()) return true;
   if (cache.contains(target)) return cache[target];
