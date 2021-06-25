@@ -52,3 +52,42 @@ TEST_CASE("best_sum()") {
       best_sum(100, std::vector<uint>{1, 2, 5, 25}, cache).value_or(std::vector<uint>()) == std::vector<uint>{25, 25, 25, 25}
   );
 }
+
+TEST_CASE("can_construct()") {
+  std::unordered_map<std::string, bool> cache;
+
+  REQUIRE(
+      can_construct(
+          std::string("abcdef"),
+          std::vector<std::string>{"ab", "abc", "cd", "def", "abcd"},
+          cache
+      ) == true
+  );
+  cache.clear();
+
+  REQUIRE(
+      can_construct(
+          std::string("skateboard"),
+          std::vector<std::string>{"bo", "rd", "ate", "t", "ska", "sk", "boar"},
+          cache
+      ) == false
+  );
+  cache.clear();
+
+  REQUIRE(
+      can_construct(
+          std::string("enterapotentpot"),
+          std::vector<std::string>{"a", "p", "ent", "enter", "ot", "o", "t"},
+          cache
+      ) == true
+  );
+  cache.clear();
+
+  REQUIRE(  // should finish fairly quickly
+      can_construct(
+          std::string("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef"),
+          std::vector<std::string>{"e", "ee", "eee", "eeee", "eeeee", "eeeeee"},
+          cache
+      ) == false
+  );
+}

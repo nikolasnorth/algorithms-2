@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include <optional>
+#include <string>
 
 typedef unsigned int uint;
 
@@ -99,4 +100,29 @@ std::optional<std::vector<uint>> best_sum(
 
   cache[target] = best;
   return best;
+}
+
+// Given a list of words, asserts whether the target can be constructed by any combination of those words.
+// Note: Any given word can be used more than once to construct the target.
+//
+// Time: O(m^2 * n)
+// Space: O(m^2)
+// where m = size of target, and n = size of words
+bool can_construct(const std::string &target, const std::vector<std::string> &words, std::unordered_map<std::string, bool> &cache) {
+  if (target.empty()) return true;
+  if (cache.contains(target)) return cache[target];
+
+  for (const std::string &word : words) {
+    const auto i = target.find(word);
+    if (i != 0) continue;  // word not a prefix of target
+
+    auto target_copy = target;
+    auto result = can_construct(target_copy.erase(i, word.length()), words, cache);
+    cache[target] = result;
+
+    if (result) return true;
+  }
+
+  cache[target] = false;
+  return false;
 }
