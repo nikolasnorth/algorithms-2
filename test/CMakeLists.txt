@@ -13,4 +13,8 @@ set(SOURCE_FILES
         data-structures/hashmap/HashMapTest.cpp
         )
 add_executable(algorithms_test ${SOURCE_FILES})
+
+set(LINKED_LIST_SOURCE main.cpp data-structures/linked-list/LinkedListTest.cpp)
+add_executable(LinkedListTest ${LINKED_LIST_SOURCE})
+
 target_link_libraries(algorithms_test algorithms_src)
