@@ -12,8 +12,8 @@ typedef unsigned int uint;
 // Time: O(n)
 // Space: O(n) auxiliary
 //
-int64_t fib(int32_t n) {
-  static std::unordered_map<int, int64_t> cache;
+auto fib(int n) -> uint64_t {
+  static std::unordered_map<int, uint64_t> cache;
 
   if (n <= 2) return 1;
   if (cache.contains(n)) return cache[n];
@@ -30,7 +30,7 @@ int64_t fib(int32_t n) {
 // Space: O(m)
 // where m = target, and n = size of nums.
 //
-bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unordered_map<unsigned int, bool> &cache) {
+auto can_sum(const int target, const std::vector<uint> &nums, std::unordered_map<uint, bool> &cache) -> bool {
   if (cache.contains(target)) return cache[target];
   if (target == 0) return true;
   if (target < 0) return false;
@@ -53,11 +53,9 @@ bool can_sum(const int target, const std::vector<unsigned int> &nums, std::unord
 // Space: O(m^2)
 // where m = target, and n = size of nums
 //
-std::optional<std::vector<uint>> how_sum(
-    const int target,
-    const std::vector<uint> &nums,
-    std::unordered_map<int, std::optional<std::vector<uint>>> &cache
-) {
+auto how_sum(
+    const int target, const std::vector<uint> &nums, std::unordered_map<int, std::optional<std::vector<uint>>> &cache
+) -> std::optional<std::vector<uint>> {
   if (target == 0) return std::vector<uint>();
   if (target < 0) return std::nullopt;
   if (cache.contains(target)) return cache[target];
@@ -84,11 +82,9 @@ std::optional<std::vector<uint>> how_sum(
 // Space: O(m^2)
 // where m = target, and n = size of nums
 //
-std::optional<std::vector<uint>> best_sum(
-    const int target,
-    const std::vector<uint> &nums,
-    std::unordered_map<int, std::optional<std::vector<uint>>> &cache
-) {
+auto best_sum(
+    const int target, const std::vector<uint> &nums, std::unordered_map<int, std::optional<std::vector<uint>>> &cache
+) -> std::optional<std::vector<uint>> {
   if (target == 0) return std::vector<uint>();
   if (target < 0) return std::nullopt;
   if (cache.contains(target)) return cache[target];
