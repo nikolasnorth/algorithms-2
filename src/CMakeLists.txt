@@ -16,5 +16,7 @@ set(SOURCE_FILES
         data-structures/array/static-array/StaticArray.h
         data-structures/array/dynamic-array/DynamicArray.cpp
         data-structures/array/dynamic-array/DynamicArray.h
+        data-structures/hashmap/HashMap.h
+        data-structures/hashmap/HashMap.cpp
         )
 add_library(algorithms_src ${SOURCE_FILES})
