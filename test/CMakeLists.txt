@@ -9,6 +9,7 @@ set(SOURCE_FILES
         data-structures/queue/ArrayQueueTest.cpp
         data-structures/queue/ListQueueTest.cpp
         data-structures/array/StaticArrayTest.cpp
+        data-structures/array/DynamicArrayTest.cpp
         )
 add_executable(algorithms_test ${SOURCE_FILES})
 target_link_libraries(algorithms_test algorithms_src)

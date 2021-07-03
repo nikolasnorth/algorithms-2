@@ -14,5 +14,7 @@ set(SOURCE_FILES
         data-structures/queue/list-queue/ListQueue.h
         data-structures/array/static-array/StaticArray.cpp
         data-structures/array/static-array/StaticArray.h
+        data-structures/array/dynamic-array/DynamicArray.cpp
+        data-structures/array/dynamic-array/DynamicArray.h
         )
 add_library(algorithms_src ${SOURCE_FILES})
