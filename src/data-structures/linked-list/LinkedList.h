@@ -12,6 +12,10 @@ private:
 public:
   Node() = delete;
 
+  // Initializes a new node object storing the given data.
+  // Throws std::invalid_argument if data is equal to nullptr.
+  //
+  // Time O:(1)
   explicit Node(T data);
 
   // Returns a const reference to the data stored at the next node (if it exists).
