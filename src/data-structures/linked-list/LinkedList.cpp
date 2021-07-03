@@ -1,7 +1,9 @@
 #include "LinkedList.h"
 
 template<typename T>
-Node<T>::Node(T data) : data_(std::move(data)), next_(nullptr), prev_(nullptr) {}  // TODO: check for null being passed in as data
+Node<T>::Node(T data) : data_(data ? std::move(data) : nullptr), next_(nullptr), prev_(nullptr) {
+  if (data == nullptr) throw std::invalid_argument("Data must not be null.");
+}
 
 template<typename T>
 auto Node<T>::get_next() const -> std::optional<const T &> {
