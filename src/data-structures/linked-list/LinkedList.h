@@ -1,30 +1,55 @@
 #pragma once
 
-#include <stdexcept>
 #include <optional>
+#include <memory>
 
 template<typename T>
 class Node {
 private:
-  Node *_next;
-  Node *_prev;
-  T _data;
+  std::shared_ptr<Node> next_;
+  std::shared_ptr<Node> prev_;
+  T data_;
 public:
+  Node() = delete;
+
   explicit Node(T data);
 
+  // Returns a const reference to the data stored at the next node (if it exists).
+  // Otherwise, std::nullopt is returned.
+  //
+  // Time: O(1)
   [[nodiscard]]
-  Node *next() const;
+  auto get_next() const -> std::optional<const T &>;
 
+  // Returns a const reference to the data stored at the previous node (if it exists).
+  // Otherwise, std::nullopt is returned.
+  //
+  // Time: O(1)
   [[nodiscard]]
-  Node *prev() const;
+  auto get_prev() const -> std::optional<const T &>;
 
+  // Returns a const reference to the data stored at the current node.
+  //
+  // Time: O(1)
   [[nodiscard]]
-  int data() const;
+  auto get_data() const -> const T &;
 
-  void set_next(Node *n);
+  // Sets next equal to a new node storing the given data.
+  // Throws std::invalid_argument if data is equal to nullptr.
+  //
+  // Time: O(1)
+  void set_next(T data);
 
-  void set_prev(Node *n);
+  // Sets prev equal to a new node storing the given data.
+  // Throws std::invalid_argument if data is equal to nullptr.
+  //
+  // Time: O(1)
+  void set_prev(T data);
 
+  // Sets data for the current node.
+  // Throws std::invalid_argument if data is equal to nullptr.
+  //
+  // Time: O(1)
   void set_data(T data);
 };
 

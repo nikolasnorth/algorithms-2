@@ -1,36 +1,41 @@
 #include "LinkedList.h"
 
 template<typename T>
-Node<T>::Node(T data) : _data(data), _next(nullptr), _prev(nullptr) {}
+Node<T>::Node(T data) : data_(std::move(data)), next_(nullptr), prev_(nullptr) {}  // TODO: check for null being passed in as data
 
 template<typename T>
-Node<T> *Node<T>::next() const {
-  return _next;
+auto Node<T>::get_next() const -> std::optional<const T &> {
+  if (next_) return *next_;
+  return std::nullopt;
 }
 
 template<typename T>
-Node<T> *Node<T>::prev() const {
-  return _prev;
+auto Node<T>::get_prev() const -> std::optional<const T &> {
+  if (prev_) return *prev_;
+  return std::nullopt;
 }
 
 template<typename T>
-int Node<T>::data() const {
-  return _data;
+auto Node<T>::get_data() const -> const T & {
+  return data_;
 }
 
 template<typename T>
-void Node<T>::set_next(Node *n) {
-  this->_next = n;
+void Node<T>::set_next(T data) {
+  if (data == nullptr) throw std::invalid_argument("Data must not be null.");
+  next_ = std::make_shared<Node>(std::move(data));
 }
 
 template<typename T>
-void Node<T>::set_prev(Node *n) {
-  this->_prev = n;
+void Node<T>::set_prev(T data) {
+  if (data == nullptr) throw std::invalid_argument("Data must not be null.");
+  prev_ = std::make_shared<Node>(std::move(data));
 }
 
 template<typename T>
 void Node<T>::set_data(T data) {
-  this->_data = data;
+  if (data == nullptr) throw std::invalid_argument("Data must not be null.");
+  data_ = std::move(data);
 }
 
 template<typename T>
