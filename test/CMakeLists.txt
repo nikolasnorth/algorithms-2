@@ -1,8 +1,8 @@
 project(algorithms_test)
 set(SOURCE_FILES
         main.cpp
-        sorting_test.cpp
-        dp_test.cpp
+        algorithms/sorting_test.cpp
+        algorithms/dp_test.cpp
         data-structures/linked-list/LinkedListTest.cpp
         data-structures/stack/ArrayStackTest.cpp
         data-structures/stack/ListStackTest.cpp
@@ -17,7 +17,7 @@ add_executable(algorithms_test ${SOURCE_FILES})
 set(LINKED_LIST_SOURCE main.cpp data-structures/linked-list/LinkedListTest.cpp)
 add_executable(LinkedListTest ${LINKED_LIST_SOURCE})
 
-set(DP_SOURCE main.cpp dp_test.cpp)
+set(DP_SOURCE main.cpp algorithms/dp_test.cpp)
 add_executable(DPTest ${DP_SOURCE})
 
 target_link_libraries(algorithms_test algorithms_src)
