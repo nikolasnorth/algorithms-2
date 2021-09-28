@@ -5,7 +5,7 @@
 #include <optional>
 #include <string>
 
-typedef unsigned int uint;
+using uint = unsigned int;
 
 // Returns the n-th fibonacci number (optimized with memoization).
 //

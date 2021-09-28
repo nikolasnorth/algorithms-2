@@ -1,7 +1,7 @@
 project(algorithms_src)
 set(SOURCE_FILES
-        sorting.cpp
-        dp.cpp
+        algorithms/sorting.cpp
+        algorithms/dp.cpp
         data-structures/linked-list/LinkedList.cpp
         data-structures/linked-list/LinkedList.h
         data-structures/stack/array-stack/ArrayStack.cpp

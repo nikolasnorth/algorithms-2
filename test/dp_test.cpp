@@ -1,5 +1,5 @@
 #include "catch.hh"
-#include "../src/dp.cpp"
+#include "../src/algorithms/dp.cpp"
 
 TEST_CASE("fib()") {
   REQUIRE(fib(6) == 8);

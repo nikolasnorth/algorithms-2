@@ -1,5 +1,5 @@
 #include "catch.hh"
-#include "../src/sorting.cpp"
+#include "../src/algorithms/sorting.cpp"
 
 TEST_CASE("Bubble sort") {
   std::vector<int> items = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
